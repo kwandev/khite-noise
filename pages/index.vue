@@ -45,7 +45,7 @@ export default {
   bottom: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,.5);
+  background-color: rgba($dark,.5);
   background-size: cover;
   background-position: 50%;
   background-repeat: no-repeat;
@@ -56,7 +56,7 @@ export default {
     align-items: center;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,.5);
+    background-color: rgba($dark,.5);
   }
 }
 </style>

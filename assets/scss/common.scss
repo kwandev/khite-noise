@@ -1,0 +1,5 @@
+@charset 'utf-8';
+
+@mixin transitions ($transitionNames: all) {
+  transition: $transitionNames .3s;
+}

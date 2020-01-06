@@ -38,6 +38,11 @@ export default {
 <style lang="scss" scoped>
 .clock {
   font-size: 10rem;
-  color: rgb(255,255,255);
+  color: $white;
+  @include transitions(font-size);
+}
+
+@media (max-width: 992px) {
+  .clock { font-size: 8rem; }
 }
 </style>
