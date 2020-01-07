@@ -1,24 +1,30 @@
 <template>
-  <div class="play_list">
-    <ul class="music_list">
-      <li class="music">
-        <a-icon type="coffee" />
-      </li>
-      <li class="music">
-        <a-icon type="coffee" />
-      </li>
-      <li class="music">
-        <a-icon type="coffee" />
-      </li>
-    </ul>
-  </div>
+  <ul class="play_list">
+    <li
+      is="music"
+      v-for="item in musicList"
+      :key="item.id"
+      :music="item"
+    />
+  </ul>
 </template>
 
 <script>
+import Music from './Music'
+
 export default {
   name: 'PlayList',
+  components: {
+    Music
+  },
   data () {
     return {
+      musicList: [
+        { id: 1, title: 'cafe', play: false },
+        { id: 2, title: 'rain', play: false },
+        { id: 3, title: 'wave', play: false },
+        { id: 4, title: 'forest', play: false }
+      ]
     }
   }
 }
@@ -27,16 +33,16 @@ export default {
 <style lang="scss" scoped>
 .play_list {
   display: flex;
-  width: 100%;
-  height: 100%;
-}
-.music_list {
-  display: flex;
-  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  padding: 0;
-  list-style: none;
-  flex: 1;
+  width: 80%;
   color: #fff;
+}
+
+@media (max-width: 992px) {
+  .play_list {
+    width: 100%;
+    overflow-x: auto;
+  }
 }
 </style>
