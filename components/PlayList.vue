@@ -1,12 +1,14 @@
 <template>
-  <ul class="play_list">
-    <li
-      is="music"
-      v-for="item in musicList"
-      :key="item.id"
-      :music="item"
-    />
-  </ul>
+  <div class="play_list_wrap">
+    <ul class="play_list">
+      <li
+        is="music"
+        v-for="item in musicList"
+        :key="item.id"
+        :music="item"
+      />
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -31,15 +33,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.play_list_wrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 15rem;
+}
+
 .play_list {
   display: flex;
   justify-content: space-around;
   align-items: center;
   width: 80%;
-  color: #fff;
+  color: $white;
 }
 
 @media (max-width: 992px) {
+  .play_list_wrap { height: 10rem; }
   .play_list {
     width: 100%;
     overflow-x: auto;

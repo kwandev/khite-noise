@@ -4,12 +4,9 @@
     class="container"
   >
     <a-layout-content class="container_inner">
-      <div class="clock_wrap">
-        <clock />
-      </div>
-      <div class="play_list_wrap">
-        <play-list />
-      </div>
+      <clock />
+      <player />
+      <play-list />
     </a-layout-content>
   </a-layout>
 </template>
@@ -17,12 +14,14 @@
 <script>
 import { mapGetters } from 'vuex'
 import Clock from '~/components/Clock'
+import Player from '~/components/Player'
 import PlayList from '~/components/PlayList'
 
 export default {
   name: 'Index',
   components: {
     Clock,
+    Player,
     PlayList
   },
   data () {
@@ -62,24 +61,6 @@ export default {
     width: 100%;
     height: 100%;
     background-color: rgba($dark,.5);
-  }
-}
-
-.clock_wrap {
-  display: flex;
-  flex: auto;
-  align-items: center;
-}
-.play_list_wrap {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 15rem;
-}
-
-@media (max-width: 992px) {
-  .play_list_wrap {
-    height: 10rem;
   }
 }
 </style>

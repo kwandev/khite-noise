@@ -1,8 +1,6 @@
 <template>
   <div class="clock">
-    <div class="clock__times">
-      {{ times }}
-    </div>
+    {{ times }}
   </div>
 </template>
 
@@ -37,6 +35,9 @@ export default {
 
 <style lang="scss" scoped>
 .clock {
+  display: flex;
+  flex: auto;
+  align-items: center;
   font-size: 10rem;
   color: $white;
   @include transitions(font-size);
