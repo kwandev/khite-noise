@@ -25,7 +25,8 @@ export default {
         { id: 1, title: 'cafe', play: false },
         { id: 2, title: 'rain', play: false },
         { id: 3, title: 'wave', play: false },
-        { id: 4, title: 'forest', play: false }
+        { id: 4, title: 'forest', play: false },
+        { id: 5, title: 'fire', play: false }
       ]
     }
   }
