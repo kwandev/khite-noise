@@ -14,9 +14,15 @@ export default {
       default: () => ({})
     }
   },
+  computed: {
+  },
   methods: {
     playMusic () {
       this.$store.commit('setBg', this.music.title)
+      this.$store.commit('setPlaying', {
+        id: this.music.id,
+        playing: true
+      })
     }
   }
 }

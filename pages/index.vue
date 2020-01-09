@@ -34,7 +34,7 @@ export default {
     ])
   },
   fetch ({ store, params }) {
-    store.commit('setBg', 'rain')
+    // store.commit('setBg', 'rain')
   }
 }
 </script>
