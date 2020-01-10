@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'Clock',
   data () {
@@ -14,17 +15,33 @@ export default {
       playing: null
     }
   },
+  computed: {
+    ...mapGetters([
+      'getCurrentMusic'
+    ])
+  },
+  watch: {
+    'getCurrentMusic.playing' (isPlay) {
+      if (isPlay) {
+        this.startTimes()
+      } else {
+        this.clearTimes()
+      }
+    }
+  },
   mounted () {
-    this.startTimes()
+    this.initTimes()
   },
   methods: {
-    startTimes () {
+    initTimes () {
       this.momentTimes = this.$moment().hours(0).minutes(0).seconds(0)
-      this.playing = setInterval(this.intervalTimes, 1000)
     },
     intervalTimes () {
       this.momentTimes.add(1, 's')
       this.times = this.momentTimes.format('HH:mm:ss')
+    },
+    startTimes () {
+      this.playing = setInterval(this.intervalTimes, 1000)
     },
     clearTimes () {
       clearInterval(this.playing)
