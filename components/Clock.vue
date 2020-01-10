@@ -9,7 +9,7 @@ export default {
   name: 'Clock',
   data () {
     return {
-      times: '00:00',
+      times: '00:00:00',
       momentTimes: null,
       playing: null
     }
@@ -19,12 +19,12 @@ export default {
   },
   methods: {
     startTimes () {
-      this.momentTimes = this.$moment().minutes(0).seconds(0)
+      this.momentTimes = this.$moment().hours(0).minutes(0).seconds(0)
       this.playing = setInterval(this.intervalTimes, 1000)
     },
     intervalTimes () {
       this.momentTimes.add(1, 's')
-      this.times = this.momentTimes.format('mm:ss')
+      this.times = this.momentTimes.format('HH:mm:ss')
     },
     clearTimes () {
       clearInterval(this.playing)
