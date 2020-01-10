@@ -13,11 +13,12 @@
     "test": "jest"
   },
   "dependencies": {
-    "nuxt": "^2.0.0",
-    "ant-design-vue": "^1.1.10",
     "@nuxtjs/axios": "^5.3.6",
+    "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/pwa": "^3.0.0-0",
-    "@nuxtjs/dotenv": "^1.4.0"
+    "ant-design-vue": "^1.1.10",
+    "nuxt": "^2.0.0",
+    "vue-awesome": "^4.0.2"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^1.0.1",

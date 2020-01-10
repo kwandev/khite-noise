@@ -1,34 +1,34 @@
 export const state = () => ({
-  bg: 'cafe',
+  bg: 'Cafe',
   volume: 20,
   musics: [
     {
       id: 1,
-      title: 'cafe',
+      title: 'Cafe',
       playing: false,
       audio: require('~/assets/audio/cafe.mp3')
     },
     {
       id: 2,
-      title: 'rain',
+      title: 'Rain',
       playing: false,
       audio: require('~/assets/audio/rain.mp3')
     },
     {
       id: 3,
-      title: 'beach',
+      title: 'Beach',
       playing: false,
       audio: require('~/assets/audio/beach.mp3')
     },
     {
       id: 4,
-      title: 'forest',
+      title: 'Forest',
       playing: false,
       audio: require('~/assets/audio/forest.mp3')
     },
     {
       id: 5,
-      title: 'fire',
+      title: 'Fire',
       playing: false,
       audio: require('~/assets/audio/fire.mp3')
     }
@@ -37,7 +37,8 @@ export const state = () => ({
 
 export const getters = {
   getBg (state) {
-    return require(`~/assets/img/bg/${state.bg}.jpg`)
+    const bg = state.bg.toLowerCase()
+    return require(`~/assets/img/bg/${bg}.jpg`)
   },
   getVolume (state) {
     return state.volume

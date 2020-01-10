@@ -29,7 +29,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/antd-ui'
+    '@/plugins/antd-ui',
+    '@/plugins/vue-awesome'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -77,6 +78,7 @@ export default {
           name: '[path][name].[ext]'
         }
       })
-    }
+    },
+    transpile: [/^vue-awesome/]
   }
 }
