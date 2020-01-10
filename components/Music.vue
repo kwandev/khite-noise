@@ -1,5 +1,5 @@
 <template>
-  <li @click="playMusic" class="music">
+  <li @click="onMusic" class="music">
     <div class="icon">
       <v-icon :name="icons" :title="music.title" scale="4" />
     </div>
@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'Music',
   props: {
@@ -36,15 +37,24 @@ export default {
       }
 
       return 'coffee'
-    }
+    },
+    ...mapGetters([
+      'getCurrentMusic'
+    ])
   },
   methods: {
-    playMusic () {
-      this.$store.commit('setBg', this.music.title)
-      this.$store.commit('setPlaying', {
-        id: this.music.id,
-        playing: true
-      })
+    onMusic () {
+      if (this.getCurrentMusic.id === null || this.getCurrentMusic.id !== this.music.id) {
+        const music = Object.assign(this.music, {
+          playing: true
+        })
+        this.$store.commit('setCurrentMusic', music)
+        this.$store.commit('setBg', music.title)
+      } else if (this.getCurrentMusic.playing) {
+        this.$store.commit('pauseCurrentMusic')
+      } else {
+        this.$store.commit('playCurrentMusic')
+      }
     }
   }
 }

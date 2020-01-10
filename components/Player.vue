@@ -23,36 +23,35 @@ export default {
       return this.volume / 100
     },
     ...mapGetters([
-      'getPlayingMusic'
+      'getCurrentMusic'
     ])
   },
   watch: {
-    'getPlayingMusic.id' () {
+    'getCurrentMusic.id' () {
       this.init()
+    },
+    'getCurrentMusic.playing' (isPlay) {
+      if (isPlay) {
+        this.play()
+      } else {
+        this.pause()
+      }
     }
   },
   mounted () {
     this.audio = new Audio()
+    this.audio.volume = this.volumePercent
+    this.audio.loop = true
   },
   methods: {
     init () {
-      this.audio.src = this.getPlayingMusic.audio
-      this.audio.volume = this.volumePercent
-      this.audio.loop = true
+      this.audio.src = this.getCurrentMusic.audio
       this.play()
     },
     play () {
-      if (!this.audio) {
-        return
-      }
-
       this.audio.play()
     },
     pause () {
-      if (!this.audio) {
-        return
-      }
-
       this.audio.pause()
     },
     onMuted () {
