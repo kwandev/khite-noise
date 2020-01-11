@@ -61,6 +61,6 @@ export default {
 }
 
 @media (max-width: 992px) {
-  .clock { font-size: 8rem; }
+  .clock { font-size: 5rem; }
 }
 </style>
