@@ -38,12 +38,14 @@ export default {
   justify-content: center;
   width: 100%;
   height: 15rem;
+  overflow-x: auto;
 }
 
 .play_list {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  // justify-content: space-around;
+  // align-items: center;
+  flex-wrap: nowrap;
   width: 80%;
   color: $white;
 }
@@ -51,8 +53,7 @@ export default {
 @media (max-width: 992px) {
   .play_list_wrap { height: 10rem; }
   .play_list {
-    width: 100%;
-    overflow-x: auto;
+    width: auto;
   }
 }
 </style>
