@@ -75,13 +75,21 @@ export default {
     cursor: pointer;
   }
 
-  .icon { font-size: 4rem; }
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 6rem;
+   }
+  .title { font-size: 2rem; }
 }
 
 @media (max-width: 992px) {
   .music {
-    width: 10rem;
-    font-size: 1.5rem;
+    .fa-icon {
+      width: 60%;
+    }
+    .title { display: none; }
   }
 }
 </style>
