@@ -25,15 +25,15 @@ export default {
     volumePercent () {
       return this.volume / 100
     },
-    ...mapGetters([
-      'getCurrentMusic'
-    ])
+    ...mapGetters('music', {
+      currentMusic: 'getCurrentMusic'
+    })
   },
   watch: {
-    'getCurrentMusic.id' () {
+    'currentMusic.id' () {
       this.init()
     },
-    'getCurrentMusic.playing' (isPlay) {
+    'currentMusic.playing' (isPlay) {
       if (isPlay) {
         this.play()
       } else {
@@ -54,7 +54,7 @@ export default {
     init () {
       this.clearFadeIn()
       this.clearFadeOut()
-      this.audio.src = this.getCurrentMusic.audio
+      this.audio.src = this.currentMusic.audio
       this.setFadeIn()
       this.play()
     },

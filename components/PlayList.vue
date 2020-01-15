@@ -3,7 +3,7 @@
     <ul class="play_list">
       <li
         is="music"
-        v-for="item in getMusics"
+        v-for="item in musics"
         :key="item.id"
         :music="item"
       />
@@ -25,9 +25,9 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
-      'getMusics'
-    ])
+    ...mapGetters({
+      musics: 'music/getMusics'
+    })
   }
 }
 </script>

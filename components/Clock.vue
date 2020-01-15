@@ -16,12 +16,12 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
-      'getCurrentMusic'
-    ])
+    ...mapGetters('music', {
+      currentMusic: 'getCurrentMusic'
+    })
   },
   watch: {
-    'getCurrentMusic.playing' (isPlay) {
+    'currentMusic.playing' (isPlay) {
       if (isPlay) {
         this.startTimes()
       } else {
