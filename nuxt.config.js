@@ -1,3 +1,4 @@
+require('dotenv').config()
 
 export default {
   mode: 'universal',
@@ -38,7 +39,10 @@ export default {
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
-    '@nuxtjs/moment'
+    '@nuxtjs/moment',
+    ['@nuxtjs/google-analytics', {
+      id: process.env.GA_ID
+    }]
   ],
   /*
   ** Nuxt.js modules
