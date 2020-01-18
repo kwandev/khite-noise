@@ -16,12 +16,12 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
-      'getCurrentMusic'
-    ])
+    ...mapGetters('music', {
+      currentMusic: 'getCurrentMusic'
+    })
   },
   watch: {
-    'getCurrentMusic.playing' (isPlay) {
+    'currentMusic.playing' (isPlay) {
       if (isPlay) {
         this.startTimes()
       } else {
@@ -61,6 +61,6 @@ export default {
 }
 
 @media (max-width: 992px) {
-  .clock { font-size: 8rem; }
+  .clock { font-size: 5rem; }
 }
 </style>

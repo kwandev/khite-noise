@@ -38,22 +38,22 @@ export default {
 
       return 'coffee'
     },
-    ...mapGetters([
-      'getCurrentMusic'
-    ])
+    ...mapGetters('music', {
+      currentMusic: 'getCurrentMusic'
+    })
   },
   methods: {
     onMusic () {
-      if (this.getCurrentMusic.id === null || this.getCurrentMusic.id !== this.music.id) {
+      if (this.currentMusic.id === null || this.currentMusic.id !== this.music.id) {
         const music = Object.assign(this.music, {
           playing: true
         })
-        this.$store.commit('setCurrentMusic', music)
+        this.$store.commit('music/setCurrentMusic', music)
         this.$store.commit('setBg', music.title)
-      } else if (this.getCurrentMusic.playing) {
-        this.$store.commit('pauseCurrentMusic')
+      } else if (this.currentMusic.playing) {
+        this.$store.commit('music/pauseCurrentMusic')
       } else {
-        this.$store.commit('playCurrentMusic')
+        this.$store.commit('music/playCurrentMusic')
       }
     }
   }
@@ -75,13 +75,21 @@ export default {
     cursor: pointer;
   }
 
-  .icon { font-size: 4rem; }
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 6rem;
+   }
+  .title { font-size: 2rem; }
 }
 
 @media (max-width: 992px) {
   .music {
-    width: 10rem;
-    font-size: 1.5rem;
+    .fa-icon {
+      width: 60%;
+    }
+    .title { display: none; }
   }
 }
 </style>

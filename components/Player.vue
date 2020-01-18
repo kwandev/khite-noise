@@ -15,22 +15,25 @@ export default {
     return {
       audio: null,
       volume: 20,
-      icon: 'volume-up'
+      icon: 'volume-up',
+      duration: 0,
+      fadeIn: null,
+      fadeOut: null
     }
   },
   computed: {
     volumePercent () {
       return this.volume / 100
     },
-    ...mapGetters([
-      'getCurrentMusic'
-    ])
+    ...mapGetters('music', {
+      currentMusic: 'getCurrentMusic'
+    })
   },
   watch: {
-    'getCurrentMusic.id' () {
+    'currentMusic.id' () {
       this.init()
     },
-    'getCurrentMusic.playing' (isPlay) {
+    'currentMusic.playing' (isPlay) {
       if (isPlay) {
         this.play()
       } else {
@@ -42,11 +45,59 @@ export default {
     this.audio = new Audio()
     this.audio.volume = this.volumePercent
     this.audio.loop = true
+    this.audio.onloadeddata = (e) => {
+      this.audio.volume = 0
+      this.duration = this.audio.duration
+    }
   },
   methods: {
     init () {
-      this.audio.src = this.getCurrentMusic.audio
+      this.clearFadeIn()
+      this.clearFadeOut()
+      this.audio.src = this.currentMusic.audio
+      this.setFadeIn()
       this.play()
+    },
+    setFadeIn () {
+      this.fadeIn = setInterval(() => {
+        const { volume } = this.audio
+        const volumePercent = this.volumePercent / 50
+        if (volume + volumePercent < 1) {
+          this.audio.volume += volumePercent
+        }
+        if (Math.abs(this.volumePercent - volume) <= volumePercent || volume >= 1) {
+          this.setFadeOut()
+          this.clearFadeIn()
+        }
+      }, 100)
+    },
+    clearFadeIn () {
+      if (this.fadeIn) {
+        clearInterval(this.fadeIn)
+        this.fadeIn = null
+      }
+    },
+    setFadeOut () {
+      const duration = this.duration
+
+      this.fadeOut = setInterval(() => {
+        const { currentTime, volume } = this.audio
+        const volumePercent = this.volumePercent
+        if (duration - currentTime <= 5 && volume > volumePercent / 4) {
+          this.audio.volume -= volumePercent / 50
+        }
+
+        if (currentTime < 1) {
+          this.setFadeIn()
+          this.clearFadeOut()
+        }
+      }, 100)
+    },
+    clearFadeOut () {
+      if (this.fadeOut) {
+        clearInterval(this.fadeOut)
+        this.fadeOut = null
+      }
     },
     play () {
       this.audio.play()

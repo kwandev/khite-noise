@@ -1,7 +1,7 @@
 {
   "name": "khite-noise",
   "version": "1.0.0",
-  "description": "white noise",
+  "description": "백색소음을 들을 수 있고, 얼마나 들었는지 시간을 확인하는 웹앱입니다.",
   "author": "khwan",
   "private": true,
   "scripts": {
@@ -23,6 +23,7 @@
   "devDependencies": {
     "@nuxtjs/eslint-config": "^1.0.1",
     "@nuxtjs/eslint-module": "^1.0.0",
+    "@nuxtjs/google-analytics": "^2.2.3",
     "@nuxtjs/moment": "^1.5.0",
     "@nuxtjs/style-resources": "^1.0.0",
     "@vue/test-utils": "^1.0.0-beta.27",
